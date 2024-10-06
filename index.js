@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 //Test API
-const stripe = Stripe('sk_test_51Q6Bl6044til73YWxvtjT2Ii6OTSF8bwySWfnQokjSA6yp4mjqMhraKDPHDPB1nbhbOSmRkFfJM4VCTc7y3mlgEX00qiFyAA1S');
+const stripe = Stripe(process.env.STRIPE_PAYMENT_SECRET_KEY);
 
 app.use(express.json());
 app.use(cors());
@@ -27,4 +27,4 @@ app.post('/create-payment-intent', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(process.env.PORT, () => console.log('Stripe Server running...'));
